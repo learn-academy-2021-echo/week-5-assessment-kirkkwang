@@ -59,6 +59,9 @@ class Bike
   end
 end
 
+my_bike = Bike.new('Trek')
+p my_bike.bike_info
+
 # Expected output example: 'The Trek bike has 2 wheels and is going 0 mph.'
 
 # -------------------3b) Add the ability to pedal faster and brake. The pedal_faster method should increase the speed by a given amount. The brake method should decrease the speed by a given amount. The bike cannot go negative speeds.
@@ -68,7 +71,6 @@ end
 # Expected output example: my_bike.brake(5) => 23
 # Expected output example: my_bike.brake(25) => 0
 
-my_bike = Bike.new('Trek')
 p my_bike.pedal_faster(10)
 p my_bike.pedal_faster(18)
 p my_bike.brake(5)
