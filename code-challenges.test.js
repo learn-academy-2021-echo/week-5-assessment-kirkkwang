@@ -1,7 +1,5 @@
 // ASSESSMENT 5: JavaScript Coding Practical Questions with Jest
 
-const { count } = require("console");
-
 // Please read all questions thoroughly
 // Pseudo coding is REQUIRED
 // If you get stuck, please leave comments to help us understand your thought process
