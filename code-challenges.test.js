@@ -37,35 +37,47 @@ describe("codedMessageConverter", () => {
 // account for uppercase as well as lowercase ✅
 // use .join("") to turn array back into string ✅
 
+// const codedMessageConverter = (string) => {
+//   return string
+//     .split("")
+//     .map((letter) => {
+//       switch (letter) {
+//         case "a":
+//         case "A":
+//           return 4;
+//           break;
+//         case "e":
+//         case "E":
+//           return 3;
+//           break;
+//         case "i":
+//         case "I":
+//           return 1;
+//           break;
+//         case "o":
+//         case "O":
+//           return 0;
+//           break;
+//         default:
+//           return letter;
+//       }
+//     })
+//     .join("");
+// };
+
 const codedMessageConverter = (string) => {
+  let codex = { a: 4, e: 3, i: 1, o: 0 };
   return string
     .split("")
-    .map((letter) => {
-      switch (letter) {
-        case "a":
-        case "A":
-          return 4;
-          break;
-        case "e":
-        case "E":
-          return 3;
-          break;
-        case "i":
-        case "I":
-          return 1;
-          break;
-        case "o":
-        case "O":
-          return 0;
-          break;
-        default:
-          return letter;
-      }
-    })
+    .map((letter) =>
+      Object.keys(codex).includes(letter.toLowerCase())
+        ? codex[letter.toLowerCase()]
+        : letter
+    )
     .join("");
 };
 
-// I can't think of a way to refactor it, maybe as an if statement but I like using case switch for problems like this.
+// Got a tip from Salvador for the refactor, used an object so it can be easily expanded as well
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns all the words that contain that particular letter.
 
@@ -148,7 +160,7 @@ describe("fullHouseOrNot", () => {
 //         count += 1;
 //       }
 //     }
-//     return count == 2 || count == 3 ? true : false;
+//     return count == 2 || count == 3;
 //   } else {
 //     return false;
 //   }
@@ -156,14 +168,14 @@ describe("fullHouseOrNot", () => {
 
 const fullHouseOrNot = (arrayOfNums) => {
   let occurances = 0;
-  if ([...new Set(arrayOfNums)].length == 2) {
+  if ([...new Set(arrayOfNums)].length == 2 && arrayOfNums.length === 5) {
     arrayOfNums.forEach((num) =>
       arrayOfNums[0] === num ? (occurances += 1) : occurances
     );
-    return occurances == 2 || occurances == 3 ? true : false;
+    return occurances == 2 || occurances == 3;
   } else {
     return false;
   }
 };
 
-// the refactor is still pretty ugly... but I think it's better than where it was at, only by a little...  I think there's a way to do this with .reduce() but I still don't fully understand it enough to use it
+// the refactor is still pretty ugly... but I think it's better than where it was at, only by a little...  I think there's a way to do this with .reduce() but I still don't fully understand it enough to use it.  I added a check to see if the input array is the length of 5 just in case
